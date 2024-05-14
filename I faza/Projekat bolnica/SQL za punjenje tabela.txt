@@ -1,0 +1,112 @@
+-- Odeljenje table
+INSERT INTO Odeljenje (Sifra_odeljenja, Datum_izgradnje, Tip, MBR_Lekara_SP) VALUES (1, TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Kardiologija', 987654321);
+INSERT INTO Odeljenje (Sifra_odeljenja, Datum_izgradnje, Tip, MBR_Lekara_SP) VALUES (2, TO_DATE('2022-02-01', 'YYYY-MM-DD'), 'Dermatologija', 321789654);
+INSERT INTO Odeljenje (Sifra_odeljenja, Datum_izgradnje, Tip, MBR_Lekara_SP) VALUES (3, TO_DATE('2022-03-01', 'YYYY-MM-DD'), 'Ortopedija', 645812275);
+INSERT INTO Odeljenje (Sifra_odeljenja, Datum_izgradnje, Tip, MBR_Lekara_SP) VALUES (4, TO_DATE('2022-04-01', 'YYYY-MM-DD'), 'Neurohirurgija', 221155484);
+INSERT INTO Odeljenje (Sifra_odeljenja, Datum_izgradnje, Tip, MBR_Lekara_SP) VALUES (5, TO_DATE('2022-05-01', 'YYYY-MM-DD'), 'Gastroenterologija', 211884967);
+
+-- Stomatoloska_stolica table
+INSERT INTO Stomatoloska_stolica (Id, Datum_proizvodnje, Proizvodjac, MBR_TO) VALUES (1, TO_DATE('2021-01-01', 'YYYY-MM-DD'), 'Stolica Co.', 666666666);
+INSERT INTO Stomatoloska_stolica (Id, Datum_proizvodnje, Proizvodjac, MBR_TO) VALUES (2, TO_DATE('2021-02-01', 'YYYY-MM-DD'), 'Dental Equipment Inc.', 777777777);
+INSERT INTO Stomatoloska_stolica (Id, Datum_proizvodnje, Proizvodjac, MBR_TO) VALUES (3, TO_DATE('2021-03-01', 'YYYY-MM-DD'), 'Stomax Ltd.', 888888888);
+INSERT INTO Stomatoloska_stolica (Id, Datum_proizvodnje, Proizvodjac, MBR_TO) VALUES (4, TO_DATE('2021-04-01', 'YYYY-MM-DD'), 'ToothMaster', 999999999);
+INSERT INTO Stomatoloska_stolica (Id, Datum_proizvodnje, Proizvodjac, MBR_TO) VALUES (5, TO_DATE('2021-05-01', 'YYYY-MM-DD'), 'Dentatron', 1010101010);
+
+
+-- Pacijent table
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (645237332, 'Marko', 'Markovic', 'Stacionarni', 123456789);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (336644527, 'Ana', 'Anic', 'Stacionarni', 789456123);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (548549456, 'Petar', 'Petrovic', 'Stacionarni', 659824367);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (245897563, 'Jovana', 'Jovanovic', 'Stacionarni', 913451627);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (342518197, 'Milica', 'Milicic', 'Stacionarni', 645182733);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (775485269, 'Petar', 'Markovic', 'Ambulantni', 123456789);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (348591587, 'Jovana', 'Anic', 'Ambulantni', 789456123);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (466458456, 'Petar', 'Petrovic', 'Ambulantni', 659824367);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (245187577, 'Milica', 'Jovanovic', 'Ambulantni', 913451627);
+INSERT INTO Pacijent (MBR, Ime, Prezime, Tip_pacijenta, MBR_Lekara_OP) VALUES (775884585, 'Marko', 'Milicic', 'Ambulantni', 645182733);
+
+-- Stacionarni_pacijent table
+INSERT INTO Stacionarni_pacijent (MBR, Sifra_odeljenja, Datum_prijema, Datum_otpusta) VALUES (645237332, 1, TO_DATE('2022-01-01', 'YYYY-MM-DD'), TO_DATE('2022-01-10', 'YYYY-MM-DD'));
+INSERT INTO Stacionarni_pacijent (MBR, Sifra_odeljenja, Datum_prijema, Datum_otpusta) VALUES (336644527, 3, TO_DATE('2022-02-01', 'YYYY-MM-DD'), TO_DATE('2022-02-10', 'YYYY-MM-DD'));
+INSERT INTO Stacionarni_pacijent (MBR, Sifra_odeljenja, Datum_prijema, Datum_otpusta) VALUES (548549456, 5, TO_DATE('2022-03-01', 'YYYY-MM-DD'), TO_DATE('2022-03-10', 'YYYY-MM-DD'));
+INSERT INTO Stacionarni_pacijent (MBR, Sifra_odeljenja, Datum_prijema, Datum_otpusta) VALUES (245897563, 2, TO_DATE('2022-04-01', 'YYYY-MM-DD'), TO_DATE('2022-04-10', 'YYYY-MM-DD'));
+INSERT INTO Stacionarni_pacijent (MBR, Sifra_odeljenja, Datum_prijema, Datum_otpusta) VALUES (342518197, 4, TO_DATE('2022-05-01', 'YYYY-MM-DD'), TO_DATE('2022-05-10', 'YYYY-MM-DD'));
+
+-- Ambulantni_pacijent table
+INSERT INTO Ambulantni_pacijent (MBR, Adresa) VALUES (775485269, '123 Main Street');
+INSERT INTO Ambulantni_pacijent (MBR, Adresa) VALUES (348591587, '456 Elm Street');
+INSERT INTO Ambulantni_pacijent (MBR, Adresa) VALUES (466458456, '789 Oak Street');
+INSERT INTO Ambulantni_pacijent (MBR, Adresa) VALUES (245187577, '101 Pine Street');
+INSERT INTO Ambulantni_pacijent (MBR, Adresa) VALUES (775884585, '202 Maple Street');
+
+-- Higijenicari table
+INSERT INTO Higijenicari (MBR, Ime, Prezime) VALUES (111111111, 'Milan', 'Milanovic');
+INSERT INTO Higijenicari (MBR, Ime, Prezime) VALUES (222222222, 'Jovana', 'Jovanovic');
+INSERT INTO Higijenicari (MBR, Ime, Prezime) VALUES (333333333, 'Petar', 'Petrovic');
+INSERT INTO Higijenicari (MBR, Ime, Prezime) VALUES (444444444, 'Ana', 'Anic');
+INSERT INTO Higijenicari (MBR, Ime, Prezime) VALUES (555555555, 'Marko', 'Markovic');
+
+-- Tehnicko_odrzavanje table
+INSERT INTO Tehnicko_odrzavanje (MBR, Ime, Prezime, Struka) VALUES (666666666, 'Stanko', 'Stankovic', 'Tehnicar za medicinske uredjaje');
+INSERT INTO Tehnicko_odrzavanje (MBR, Ime, Prezime, Struka) VALUES (777777777, 'Mira', 'Miric', 'Tehnicar za medicinske uredjaje');
+INSERT INTO Tehnicko_odrzavanje (MBR, Ime, Prezime, Struka) VALUES (888888888, 'Zoran', 'Zoric', 'Tehnicar za medicinsku opremu');
+INSERT INTO Tehnicko_odrzavanje (MBR, Ime, Prezime, Struka) VALUES (999999999, 'Jelena', 'Jelenic', 'Tehnicar za medicinsku opremu');
+INSERT INTO Tehnicko_odrzavanje (MBR, Ime, Prezime, Struka) VALUES (1010101010, 'Nikola', 'Nikolic', 'Tehnicar za medicinsku opremu');
+
+-- Medicinsko_osoblje table
+
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (123456789, 'Marko', 'Markovic', 10, 'Lekari_OP');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (789456123, 'Jovana', 'Jovanovic', 7, 'Lekari_OP'); 
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (659824367, 'Marko', 'Markovic', 10, 'Lekari_OP');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (913451627, 'Jovana', 'Jovanovic', 7, 'Lekari_OP'); 
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (645182733, 'Jovana', 'Jovanovic', 7, 'Lekari_OP'); 
+-- -------------------------------------------------------------------
+
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (987654321, 'Ana', 'Anic', 5, 'Lekari_specijalisti');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (321789654, 'Milica', 'Milicic', 3, 'Lekari_specijalisti');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (645812275, 'Ana', 'Anic', 5, 'Lekari_specijalisti');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (221155484, 'Milica', 'Milicic', 3, 'Lekari_specijalisti');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (211884967, 'Ana', 'Anic', 5, 'Lekari_specijalisti');
+
+-- ---------------------------------------------------------------------
+
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (456123789, 'Petar', 'Petrovic', 15, 'Stomatolozi');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (978668759, 'Petar', 'Petrovic', 15, 'Stomatolozi');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (335588467, 'Petar', 'Petrovic', 15, 'Stomatolozi');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (254224875, 'Petar', 'Petrovic', 15, 'Stomatolozi');
+INSERT INTO Medicinsko_osoblje (MBR, Ime, Prezime, Godine_radnog_staza, Tip_med_osoblja) VALUES (987658585, 'Petar', 'Petrovic', 15, 'Stomatolozi');
+
+-- Lekari_opste_prakse table
+INSERT INTO Lekari_opste_prakse (MBR, Br_ordinacije) VALUES (123456789, 3);
+INSERT INTO Lekari_opste_prakse (MBR, Br_ordinacije) VALUES (789456123, 2);
+INSERT INTO Lekari_opste_prakse (MBR, Br_ordinacije) VALUES (659824367, 1);
+INSERT INTO Lekari_opste_prakse (MBR, Br_ordinacije) VALUES (913451627, 4);
+INSERT INTO Lekari_opste_prakse (MBR, Br_ordinacije) VALUES (645182733, 5);
+
+-- Stomatolozi table
+INSERT INTO Stomatolozi (MBR, Id_stolice, Smena) VALUES (456123789, 1, 'Prva');
+INSERT INTO Stomatolozi (MBR, Id_stolice, Smena) VALUES (978668759, 2, 'Druga');
+INSERT INTO Stomatolozi (MBR, Id_stolice, Smena) VALUES (335588467, 3, 'Prva');
+INSERT INTO Stomatolozi (MBR, Id_stolice, Smena) VALUES (254224875, 4, 'Druga');
+INSERT INTO Stomatolozi (MBR, Id_stolice, Smena) VALUES (987658585, 5, 'Prva');
+
+-- Lekari_Specijalisti table
+INSERT INTO Lekari_Specijalisti (MBR, Specijalnost) VALUES (987654321, 'Kardiolog');
+INSERT INTO Lekari_Specijalisti (MBR, Specijalnost) VALUES (321789654, 'Dermatolog');
+INSERT INTO Lekari_Specijalisti (MBR, Specijalnost) VALUES (645812275, 'Ortoped');
+INSERT INTO Lekari_Specijalisti (MBR, Specijalnost) VALUES (221155484, 'Neurohirurg');
+INSERT INTO Lekari_Specijalisti (MBR, Specijalnost) VALUES (211884967, 'Gastroenterolog');
+
+-- Odrzavanje_odeljenja table
+INSERT INTO Odrzavanje_odeljenja (MBR_higijenicara, Sifra_odeljenja, Sifra_odrzavanja) VALUES (111111111, 1, 101);
+INSERT INTO Odrzavanje_odeljenja (MBR_higijenicara, Sifra_odeljenja, Sifra_odrzavanja) VALUES (222222222, 2, 102);
+INSERT INTO Odrzavanje_odeljenja (MBR_higijenicara, Sifra_odeljenja, Sifra_odrzavanja) VALUES (333333333, 3, 103);
+INSERT INTO Odrzavanje_odeljenja (MBR_higijenicara, Sifra_odeljenja, Sifra_odrzavanja) VALUES (444444444, 4, 104);
+INSERT INTO Odrzavanje_odeljenja (MBR_higijenicara, Sifra_odeljenja, Sifra_odrzavanja) VALUES (555555555, 5, 105);
+
+-- Intervencija table
+INSERT INTO Intervencija (MBR_stomatologa, MBR_ambulantnog_pacijenta, Datum, Vrsta, Sifra_intervencije) VALUES (456123789, 775485269, TO_DATE('2022-01-01', 'YYYY-MM-DD'), 'Popravka zuba', 1);
+INSERT INTO Intervencija (MBR_stomatologa, MBR_ambulantnog_pacijenta, Datum, Vrsta, Sifra_intervencije) VALUES (978668759, 348591587, TO_DATE('2022-02-01', 'YYYY-MM-DD'), 'Redovni pregled', 2);
+INSERT INTO Intervencija (MBR_stomatologa, MBR_ambulantnog_pacijenta, Datum, Vrsta, Sifra_intervencije) VALUES (335588467, 466458456, TO_DATE('2022-03-01', 'YYYY-MM-DD'), 'Vadjenje zuba', 3);
+INSERT INTO Intervencija (MBR_stomatologa, MBR_ambulantnog_pacijenta, Datum, Vrsta, Sifra_intervencije) VALUES (254224875, 245187577, TO_DATE('2022-04-01', 'YYYY-MM-DD'), 'Pregled', 4);
+INSERT INTO Intervencija (MBR_stomatologa, MBR_ambulantnog_pacijenta, Datum, Vrsta, Sifra_intervencije) VALUES (987658585, 775884585, TO_DATE('2022-05-01', 'YYYY-MM-DD'), 'Stavljanje plombe', 5);

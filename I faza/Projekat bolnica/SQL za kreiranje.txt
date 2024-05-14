@@ -1,0 +1,120 @@
+CREATE TABLE Odeljenje (
+    Sifra_odeljenja NUMBER(5,0) PRIMARY KEY,
+    Datum_izgradnje DATE,
+    Tip VARCHAR2(255),
+    MBR_Lekara_SP NUMBER(13,0)
+);
+
+CREATE TABLE Stomatoloska_stolica (
+    Id NUMBER(5, 0) PRIMARY KEY,
+    Datum_proizvodnje DATE,
+    Proizvodjac VARCHAR2(255),
+    MBR_TO NUMBER(13,0)
+);
+
+
+CREATE TABLE Pacijent (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Ime VARCHAR2(255) NOT NULL,
+    Prezime VARCHAR2(255) NOT NULL,
+    Tip_pacijenta VARCHAR2(255) NOT NULL CHECK (Tip_pacijenta IN('Ambulantni', 'Stacionarni')),
+    MBR_Lekara_OP NUMBER(13,0)
+
+);
+
+CREATE TABLE Stacionarni_pacijent (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Sifra_odeljenja NUMBER(5,0) NOT NULL,
+    Datum_prijema DATE,
+    Datum_otpusta DATE
+);
+
+
+CREATE TABLE Ambulantni_pacijent (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Adresa VARCHAR2(255)
+);
+
+CREATE TABLE Higijenicari (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Ime VARCHAR2(255) NOT NULL,
+    Prezime VARCHAR2(255) NOT NULL
+);
+
+
+CREATE TABLE Tehnicko_odrzavanje (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Ime VARCHAR2(255) NOT NULL,
+    Prezime VARCHAR2(255) NOT NULL,
+    Struka VARCHAR2(255)
+);
+
+CREATE TABLE Medicinsko_osoblje (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Ime VARCHAR2(255) NOT NULL,
+    Prezime VARCHAR2(255) NOT NULL,
+    Godine_radnog_staza NUMBER(2,0),
+    Tip_med_osoblja VARCHAR2(255) NOT NULL CHECK (Tip_med_osoblja IN('Lekari_OP', 'Lekari_specijalisti','Stomatolozi')) 
+);
+
+
+CREATE TABLE Lekari_opste_prakse (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Br_ordinacije NUMBER(3,0)
+);
+
+
+CREATE TABLE Stomatolozi (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Id_stolice NUMBER(5,0),
+    Smena VARCHAR2(50) CHECK (Smena IN('Prva', 'Druga'))
+);
+
+CREATE TABLE Lekari_Specijalisti (
+    MBR NUMBER(13,0) PRIMARY KEY,
+    Specijalnost VARCHAR2(255)
+);
+
+
+CREATE TABLE Odrzavanje_odeljenja (
+    MBR_higijenicara NUMBER(13,0) NOT NULL,
+    Sifra_odeljenja NUMBER(5,0) NOT NULL,
+    Sifra_odrzavanja NUMBER(5,0) PRIMARY KEY
+);
+
+CREATE TABLE Intervencija (
+    MBR_stomatologa NUMBER(13,0) NOT NULL,
+    MBR_ambulantnog_pacijenta NUMBER(13,0) NOT NULL,
+    Datum DATE,
+    Vrsta VARCHAR2(255),
+    Sifra_intervencije NUMBER(5,0) PRIMARY KEY
+);
+
+
+ALTER TABLE Odeljenje ADD CONSTRAINT "ODELJENJE_FK" FOREIGN KEY(MBR_Lekara_SP)REFERENCES Lekari_Specijalisti(MBR);
+
+ALTER TABLE Stomatoloska_stolica ADD CONSTRAINT "STOM_STOLICA_FK" FOREIGN KEY(MBR_TO)REFERENCES Tehnicko_odrzavanje(MBR);
+
+ALTER TABLE Pacijent ADD CONSTRAINT "PACIJENT_FK" FOREIGN KEY(MBR_Lekara_OP)REFERENCES Lekari_opste_prakse(MBR);
+
+ALTER TABLE Stacionarni_pacijent ADD CONSTRAINT "STAC_PACIJENT_FK" FOREIGN KEY(MBR)REFERENCES Pacijent(MBR);
+
+ALTER TABLE Stacionarni_pacijent ADD CONSTRAINT "STAC_PACIJENT_FK2" FOREIGN KEY(Sifra_odeljenja)REFERENCES Odeljenje(Sifra_odeljenja);
+
+ALTER TABLE Ambulantni_pacijent ADD CONSTRAINT "AMB_PACIJENT_FK" FOREIGN KEY(MBR)REFERENCES Pacijent(MBR);
+
+ALTER TABLE Lekari_opste_prakse ADD CONSTRAINT "LEKARI_OP_FK" FOREIGN KEY(MBR)REFERENCES Medicinsko_osoblje(MBR);
+
+ALTER TABLE Stomatolozi ADD CONSTRAINT "STOMATOLOZI_FK" FOREIGN KEY(MBR)REFERENCES Medicinsko_osoblje(MBR);
+
+ALTER TABLE Stomatolozi ADD CONSTRAINT "STOMATOLOZI_FK2" FOREIGN KEY(Id_stolice)REFERENCES Stomatoloska_stolica(Id);
+
+ALTER TABLE Lekari_specijalisti ADD CONSTRAINT "LEKARI_SPECIJALISTI_FK" FOREIGN KEY(MBR)REFERENCES Medicinsko_osoblje(MBR);
+
+ALTER TABLE Odrzavanje_odeljenja ADD CONSTRAINT "ODRZAVANJE_FK" FOREIGN KEY(MBR_higijenicara)REFERENCES Higijenicari(MBR);
+
+ALTER TABLE Odrzavanje_odeljenja ADD CONSTRAINT "ODRZAVANJE_FK2" FOREIGN KEY(Sifra_odeljenja)REFERENCES Odeljenje(Sifra_odeljenja);
+
+ALTER TABLE Intervencija ADD CONSTRAINT "INTERVENCIJA_FK" FOREIGN KEY(MBR_stomatologa)REFERENCES Stomatolozi(MBR);
+
+ALTER TABLE Intervencija ADD CONSTRAINT "INTERVENCIJA_FK2" FOREIGN KEY(MBR_ambulantnog_pacijenta)REFERENCES Ambulantni_pacijent(MBR);
